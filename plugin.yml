@@ -1,4 +1,4 @@
-name: gitclone
+name: dingtalk
 version: 0.0.1
 inputs:
 - name: FLOWCI_DING_TOKEN
@@ -22,4 +22,4 @@ script: |
      -H 'Content-Type: application/json' \
      -d "${DING_TALK_MESSAGE}"
   
-  echo '#################### FINISH ####################'
+  echo '#################### Send ####################'
