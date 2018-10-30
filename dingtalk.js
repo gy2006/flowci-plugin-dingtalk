@@ -16,6 +16,7 @@ console.error = function (msg) {
 console.log('#################### DingTalk ####################')
 
 createMessage().then((data) => {
+  console.log(JSON.stringify(data))
   // send(data);
 });
 
@@ -39,9 +40,10 @@ function readTemplate() {
   };
 
   let templateFile = `${__dirname}/template.md`;
+  let outFile = `${__dirname}/template.md.out`;
 
   return new Promise((resolve, reject) => {
-    envsub({templateFile, options}).then((envobj) => {
+    envsub({templateFile, outFile, options}).then((envobj) => {
       resolve(envobj.outputContents);
     }).catch((err) => {
       console.error(err);
