@@ -1,25 +1,11 @@
 name: dingtalk
-version: 0.0.1
+version: 0.0.2
 inputs:
 - name: FLOWCI_DING_TOKEN
   type: string
   required: true
 
 script: |
-  echo '#################### DingTalk ####################'
-  
-  DING_TALK_URL="https://oapi.dingtalk.com/robot/send?access_token=${FLOWCI_DING_TOKEN}"
-
-  DING_TALK_MESSAGE="{
-   \"msgtype\": \"markdown\",
-   \"markdown\": {
-    \"title\": \"flow.ci\",
-      \"text\": \"### ${FLOWCI_JOB_STATUS}: ${FLOWCI_FLOW_NAME} - ${FLOWCI_JOB_BUILD_NUM}  \n > branch: ${FLOWCI_GIT_BRANCH} \n\"
-   }
-  }"
-
-  curl "${DING_TALK_URL}" \
-     -H 'Content-Type: application/json' \
-     -d "${DING_TALK_MESSAGE}"
-  
-  echo '#################### Send ####################'
+  WORK_DIR=${FLOWCI_AGENT_PLUGIN_PATH}/dingtalk
+  npm install ${WORK_DIR}
+  node ${WORK_DIR}/dingtalk.js
