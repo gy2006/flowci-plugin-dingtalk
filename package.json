@@ -1,0 +1,7 @@
+{
+  "name": "flowci-plugin-dingtalk",
+  "version": "0.0.2",
+  "dependencies": {
+    "envsub": "^3.1.0"
+  }
+}
