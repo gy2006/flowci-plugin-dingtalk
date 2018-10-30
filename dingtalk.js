@@ -16,13 +16,10 @@ console.error = function (msg) {
 console.log('#################### DingTalk ####################')
 
 createMessage().then((data) => {
-  console.log(JSON.stringify(data))
-  // send(data);
+  send(data);
 });
 
 async function createMessage() {
-  let templateFile = `${__dirname}/template.md`;
-
   return {
     "msgtype": "markdown",
     "markdown": {
@@ -40,10 +37,10 @@ function readTemplate() {
   };
 
   let templateFile = `${__dirname}/template.md`;
-  let outFile = `${__dirname}/template.md.out`;
+  let outputFile = `${__dirname}/template.out`;
 
   return new Promise((resolve, reject) => {
-    envsub({templateFile, outFile, options}).then((envobj) => {
+    envsub({templateFile, outputFile, options}).then((envobj) => {
       resolve(envobj.outputContents);
     }).catch((err) => {
       console.error(err);
