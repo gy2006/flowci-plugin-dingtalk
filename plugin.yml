@@ -6,6 +6,6 @@ inputs:
   required: true
 
 script: |
-  WORK_DIR=${FLOWCI_AGENT_PLUGIN_PATH}/dingtalk
+  WORK_DIR=${FLOWCI_AGENT_PLUGIN_DIR}/dingtalk
   npm install ${WORK_DIR}
   node ${WORK_DIR}/dingtalk.js
